@@ -6,15 +6,44 @@
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Go" %>">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
+    <%= yield :head %>
     <%= csrf_meta_tags %>
   </head>
   <body>
     <header>
       <%= render 'layouts/navigation' %>
     </header>
-    <main role="main">
-       <%= render 'layouts/messages' %>
-       <%= yield %>
-    </main>
+    <div class="container">
+      <main role="main">
+        <div class="page-header">
+          <% if content_for(:subnav) %>
+            <div class="subnav pull-right">
+              <%= yield :subnav %>
+            </div>
+          <% end %>
+          <%= yield :header %>
+        </div>
+        <div class="row">
+          <div class="col-md-<%= content_for?(:sidebar) ? local_assigns.fetch(:content_width, 9) : 12 %>">
+            <%= render 'layouts/messages' %>
+            <% if content_for?(:toolbar) %>
+              <div class="toolbar">
+                <%= yield :toolbar %>
+              </div>
+            <% end %>
+            <div class="content">
+              <%= yield :content %>
+            </div>
+          </div>
+          <% if content_for?(:sidebar) %>
+            <div class="col-md-<%= 12 - local_assigns.fetch(:content_width, 9) %>">
+              <div class="sidebar">
+                <%= yield :sidebar %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </main>
+    </div>
   </body>
 </html>

@@ -16,6 +16,11 @@ gem 'devise_invitable'
 gem 'high_voltage'
 gem 'pg'
 gem 'therubyracer', :platform=>:ruby
+gem 'bootstrap_form', github: 'RST-J/rails-bootstrap-forms', ref: 'b7ecaa3eaf97dbacdb1b56cd43606b99681f3c6e'
+gem 'human_attribute_values'
+gem 'kaminari'
+gem 'devise_zxcvbn'
+gem 'nilify_blanks'
 
 
 group :development, :test do
