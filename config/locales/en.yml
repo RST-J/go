@@ -233,7 +233,7 @@ en:
   views:
     common:
       about: About
-      sign_in: Mudder
+      sign_in: Sign in
     devise:
       confirmations:
         new:

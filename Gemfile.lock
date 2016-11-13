@@ -5,6 +5,14 @@ GIT
   specs:
     bootstrap_form (2.3.0)
 
+GIT
+  remote: git://github.com/sbilharz/cancan_namespace.git
+  revision: ce7b22380c6f478ce01ea67222918e13a86dbd51
+  branch: master
+  specs:
+    cancan_namespace (0.2.0)
+      cancancan (>= 1.13.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -60,6 +68,7 @@ GEM
       sass (>= 3.3.4)
     builder (3.2.2)
     byebug (9.0.6)
+    cancancan (1.15.0)
     capistrano (3.0.1)
       i18n
       rake (>= 10.0.0)
@@ -320,6 +329,8 @@ DEPENDENCIES
   bootstrap-sass
   bootstrap_form!
   byebug
+  cancan_namespace!
+  cancancan
   capistrano (~> 3.0.1)
   capistrano-bundler
   capistrano-rails (~> 1.1.0)

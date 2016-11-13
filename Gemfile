@@ -21,6 +21,8 @@ gem 'human_attribute_values'
 gem 'kaminari'
 gem 'devise_zxcvbn'
 gem 'nilify_blanks'
+gem 'cancancan'
+gem 'cancan_namespace', github: 'sbilharz/cancan_namespace', branch: 'master'
 
 
 group :development, :test do
