@@ -5,6 +5,10 @@ en:
     edit: Edit
   activerecord:
     attributes:
+      game:
+        board_size: Board Size
+        name: Title
+        user_id: Owner
       user:
         name: Name
     help:
@@ -17,10 +21,18 @@ en:
         street_name: "Recommended for associations, discouraged with full personal name"
         street_number: "Recommended for associations, discouraged with full personal name"
     models:
+      game:
+        one: Game
+        other: Games
       user:
         one: User
         other: Users
     values:
+      game:
+        board_size:
+          small: 9x9
+          medium: 13x13
+          large: 19x19
   attributes:
   controllers:
   date:
@@ -264,6 +276,11 @@ en:
         new:
           heading: Resend unlock instructions
           resend_button: Resend unlock instructions
+    games:
+      create:
+        heading: New Game
+      new:
+        heading: New Game
     javascript:
       password:
         mismatch_hint: "Password and password confirmation mismatch."

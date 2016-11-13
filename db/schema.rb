@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161112123148) do
+ActiveRecord::Schema.define(version: 20161113130640) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "games", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "black_id"
+    t.integer  "white_id"
+    t.string   "name"
+    t.integer  "board_size"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["black_id"], name: "index_games_on_black_id", using: :btree
+    t.index ["board_size"], name: "index_games_on_board_size", using: :btree
+    t.index ["name"], name: "index_games_on_name", using: :btree
+    t.index ["user_id"], name: "index_games_on_user_id", using: :btree
+    t.index ["white_id"], name: "index_games_on_white_id", using: :btree
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -48,4 +63,7 @@ ActiveRecord::Schema.define(version: 20161112123148) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "games", "users"
+  add_foreign_key "games", "users", column: "black_id"
+  add_foreign_key "games", "users", column: "white_id"
 end
