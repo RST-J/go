@@ -1,4 +1,11 @@
 module ApplicationHelper
+  def enum_options_for_select(klass, enum_attr, options = {})
+    options = options.reverse_merge(sort: true, excluded: [], additionals: [])
+    select_options = (klass.send(enum_attr.to_s.pluralize).keys - options[:excluded].map(&:to_s)).map { |k| [klass.send(:human_attribute_value, enum_attr, k), k] }
+    select_options += options[:additionals]
+    options[:sort] ? select_options.sort_by { |option| option.first.downcase } : select_options
+  end
+
   def within_options(selected)
     selected = selected.to_i if selected.is_a?(String)
     options = [[t_view(:query_within_any), 47_058]] + [5, 10, 20, 25, 30, 50, 75, 100].map { |value| ["#{value} km", value] }
